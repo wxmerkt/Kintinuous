@@ -2,6 +2,10 @@ cmake_minimum_required(VERSION 2.6.0)
 
 project(Kintinuous)
 
+if (NOT DEFINED CMAKE_BUILD_TYPE)
+  set(CMAKE_BUILD_TYPE "Release")
+endif()
+
 set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CMAKE_CURRENT_SOURCE_DIR}")
 
 find_package(OpenNI2 REQUIRED)
@@ -81,3 +85,9 @@ target_link_libraries(Kintinuous
                       ${SUITESPARSE_LIBRARIES}
                       ${ISAM_LIBRARIES}
                       )
+
+install(TARGETS util frontend backend
+        RUNTIME DESTINATION bin
+        LIBRARY DESTINATION lib
+        ARCHIVE DESTINATION lib/static)
+install(FILES "${CMAKE_SOURCE_DIR}/../vocab.yml.gz" DESTINATION share)
