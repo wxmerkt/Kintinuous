@@ -86,7 +86,7 @@ target_link_libraries(Kintinuous
                       ${ISAM_LIBRARIES}
                       )
 
-install(TARGETS util frontend backend
+install(TARGETS util frontend backend Kintinuous
         RUNTIME DESTINATION bin
         LIBRARY DESTINATION lib
         ARCHIVE DESTINATION lib/static)
