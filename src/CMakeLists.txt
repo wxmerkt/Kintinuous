@@ -65,6 +65,9 @@ add_library(util STATIC ${utils})
 add_library(frontend STATIC ${frontend} ${cuda} ${cuda_objs} ${containers})
 add_library(backend STATIC ${backend} ${pnp})
 
+find_package(lcm REQUIRED)
+find_package(lcmtypes_maps REQUIRED)
+
 add_executable(Kintinuous 
                ${srcs}
                )
@@ -84,6 +87,8 @@ target_link_libraries(Kintinuous
                       ${OPENNI2_LIBRARY}
                       ${SUITESPARSE_LIBRARIES}
                       ${ISAM_LIBRARIES}
+                      lcm
+                      lcmtypes_maps
                       )
 
 install(TARGETS util frontend backend Kintinuous
